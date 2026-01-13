@@ -1,11 +1,11 @@
-ï»¿#ifndef Engine_Enum_h__
+#ifndef Engine_Enum_h__
 #define Engine_Enum_h__
 
 namespace Engine
 {
 	enum class WINMODE { FULL, WIN };
 
-	//// Dynamic ì»´í¬ë„ŒíŠ¸ ê²½ìš° ë§¤ í”„ë ˆì„ë§ˆë‹¤ ê°±ì‹ í•´ì•¼í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ ì§‘ë‹¨
+	//// Dynamic ÄÄÆ÷³ÍÆ® °æ¿ì ¸Å ÇÁ·¹ÀÓ¸¶´Ù °»½ÅÇØ¾ßÇÏ´Â ÄÄÆ÷³ÍÆ® Áı´Ü
 	//enum COMPONENTID { ID_DYNAMIC, ID_STATIC, ID_END };
 
 	//enum INFO {	INFO_RIGHT, INFO_UP, INFO_LOOK, INFO_POS, INFO_END };

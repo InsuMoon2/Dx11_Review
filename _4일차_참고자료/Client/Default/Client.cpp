@@ -4,7 +4,6 @@
 #include "framework.h"
 #include "Client.h"
 
-#include "Client_Defines.h"
 #include "MainApp.h"
 
 #define MAX_LOADSTRING 100
@@ -30,13 +29,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: 여기에 코드를 입력합니다.
+    CMainApp* pMainApp = { nullptr };
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
-
-    CMainApp* pMainApp = { nullptr };
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -49,7 +47,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     pMainApp = CMainApp::Create();
-    NULL_CHECK_RETURN(pMainApp, FALSE);
+    if (nullptr == pMainApp)
+        return FALSE;
 
     // 기본 메시지 루프입니다:
     while (true)
@@ -68,9 +67,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
         pMainApp->Update(0.f);
         pMainApp->Render();
-
     }
 
+    if (0 != Safe_Release(pMainApp))
+        return FALSE;
     
     return (int) msg.wParam;
 }

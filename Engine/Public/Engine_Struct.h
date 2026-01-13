@@ -1,11 +1,18 @@
-#ifndef Engine_Struct_h__
+﻿#ifndef Engine_Struct_h__
 #define Engine_Struct_h__
 
 #include "Engine_Typedef.h"
 
 namespace Engine
 {
-	
+	typedef struct tagEngineDesc
+    {
+        HWND        hWnd;
+        WINMODE     eWinMode;
+        _uint       iViewportWidth;
+        _uint       iViewportHeight;
+
+    } ENGINE_DESC;
 }
 
 

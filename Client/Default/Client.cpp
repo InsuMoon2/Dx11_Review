@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "Client.h"
-
+#include "GameInstance.h"
 #include "Client_Defines.h"
 #include "MainApp.h"
 
@@ -51,6 +51,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     pMainApp = CMainApp::Create();
     NULL_CHECK_RETURN(pMainApp, FALSE);
 
+    auto* pGameInstance = CGameInstance::GetInstance();
+    Safe_AddRef(pGameInstance);
+
+    pGameInstance->Add_Timer(TEXT("Timer_Default"));
+    pGameInstance->Add_Timer(TEXT("Timer_60FPS"));
+
+    _float fTimeAcc = {};
+
     // 기본 메시지 루프입니다:
     while (true)
     {
@@ -66,16 +74,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
 
+        fTimeAcc += pGameInstance->Compoute_TimeDelta((TEXT("Timer_Default")));
+
+        if (fTimeAcc > 1.f / 60.f)
+        {
+            _float fps60 = pGameInstance->Compoute_TimeDelta(TEXT("Timer_60FPS"));
+
+            pMainApp->Update(fps60);
+            pMainApp->Render();
+
+            fTimeAcc = 0.f;
+
+        }
+
         pMainApp->Update(0.f);
         pMainApp->Render();
 
     }
 
-    
+    Safe_Release(pGameInstance);
+
+    if (0 != Safe_Release(pMainApp))
+        return false;
+
     return (int) msg.wParam;
 }
-
-
 
 //
 //  함수: MyRegisterClass()

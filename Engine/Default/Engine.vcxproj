@@ -149,8 +149,12 @@
     <ClInclude Include="..\Public\Engine_Struct.h" />
     <ClInclude Include="..\Public\Engine_Typedef.h" />
     <ClInclude Include="..\Public\Graphic_Device.h" />
+    <ClInclude Include="..\Public\Timer.h" />
+    <ClInclude Include="..\Public\Timer_Manager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Jusin_158\7개월차\5일차_TimerManager\Engine\Private\Timer.cpp" />
+    <ClCompile Include="..\..\..\..\Jusin_158\7개월차\5일차_TimerManager\Engine\Private\Timer_Manager.cpp" />
     <ClCompile Include="..\private\Base.cpp" />
     <ClCompile Include="..\Private\GameInstance.cpp" />
     <ClCompile Include="..\Private\Graphic_Device.cpp" />

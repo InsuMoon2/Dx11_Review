@@ -25,6 +25,12 @@
     <Filter Include="01.Utility\00. GameInstance">
       <UniqueIdentifier>{d71b2762-fdf1-45ef-9e98-fa0e154d7bb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Timer">
+      <UniqueIdentifier>{e872a963-949a-4816-b87d-cb56dc105564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Timer\Manager">
+      <UniqueIdentifier>{c7fd6bf7-9d88-4d13-9f6b-9719122c9a72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\public\Base.h">
@@ -54,6 +60,12 @@
     <ClInclude Include="..\Public\GameInstance.h">
       <Filter>01.Utility\00. GameInstance</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Timer.h">
+      <Filter>01. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Timer_Manager.h">
+      <Filter>01. Timer\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\private\Base.cpp">
@@ -64,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\GameInstance.cpp">
       <Filter>01.Utility\00. GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Jusin_158\7개월차\5일차_TimerManager\Engine\Private\Timer.cpp">
+      <Filter>01. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Jusin_158\7개월차\5일차_TimerManager\Engine\Private\Timer_Manager.cpp">
+      <Filter>01. Timer\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

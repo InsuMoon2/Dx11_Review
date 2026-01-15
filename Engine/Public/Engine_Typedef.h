@@ -1,4 +1,4 @@
-#ifndef Engine_Typedef_h__
+﻿#ifndef Engine_Typedef_h__
 #define Engine_Typedef_h__
 
 namespace Engine
@@ -9,6 +9,7 @@ namespace Engine
 	typedef		char						_char;
 
 	typedef		wchar_t						_tchar;
+    typedef     wstring                     _wstring;
 	
 	typedef		signed short				_short;
 	typedef		unsigned short				_ushort;

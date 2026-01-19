@@ -1,6 +1,7 @@
 ﻿#include "GameInstance.h"
 #include "Graphic_Device.h"
 #include "Timer_Manager.h"
+#include "Level_Manager.h"
 
 IMPLEMENT_SINGLETON(CGameInstance)
 
@@ -18,6 +19,10 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ ID
     m_pTimer_Manager = CTimer_Manager::Create();
     NULL_CHECK_RETURN(m_pTimer_Manager, E_FAIL);
 
+    // 레벨 매니저 생성
+    m_Level_Manager = CLevel_Manager::Create();
+    NULL_CHECK_RETURN(m_Level_Manager, E_FAIL);
+
 
 
     return S_OK;
@@ -25,6 +30,29 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, _Out_ ID
 
 void CGameInstance::Update_Engine(_float fTimeDelta)
 {
+    m_Level_Manager->Update(fTimeDelta);
+}
+
+void CGameInstance::LateUpdate_Engine(_float fTimeDelta)
+{
+    m_Level_Manager->LateUpdate(fTimeDelta);
+}
+
+HRESULT CGameInstance::Draw()
+{
+    m_Level_Manager->Render();
+
+    return S_OK;
+}
+
+void CGameInstance::Clear_Resources(_uint levelIndex)
+{
+
+}
+
+HRESULT CGameInstance::Change_Level(_uint newIndex, CLevel* newLevel)
+{
+    return m_Level_Manager->Change_Level(newIndex, newLevel);
 }
 
 HRESULT CGameInstance::Clear_Buffers(const _float4* pClearColor)

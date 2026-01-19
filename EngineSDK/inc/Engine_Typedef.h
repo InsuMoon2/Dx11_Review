@@ -31,7 +31,8 @@ namespace Engine
 	typedef		XMVECTOR					_vector;
 	typedef		XMMATRIX					_matrix;
 
-
+    using       Device  = ID3D11Device;
+    using       Context = ID3D11DeviceContext;
 
 	/*typedef	 struct tagMyVec3 : public D3DXVECTOR3
 	{

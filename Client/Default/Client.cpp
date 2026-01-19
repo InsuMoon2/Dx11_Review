@@ -81,6 +81,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             _float fps60 = pGameInstance->Compoute_TimeDelta(TEXT("Timer_60FPS"));
 
             pMainApp->Update(fps60);
+            pMainApp->LateUpdate(fps60);
             pMainApp->Render();
 
             fTimeAcc = 0.f;
@@ -88,6 +89,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
 
         pMainApp->Update(0.f);
+        pMainApp->LateUpdate(0.f);
         pMainApp->Render();
 
     }

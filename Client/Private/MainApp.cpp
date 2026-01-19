@@ -1,5 +1,6 @@
 ﻿#include "MainApp.h"
 
+#include "CLevel_Loading.h"
 #include "GameInstance.h"
 
 CMainApp::CMainApp()
@@ -23,19 +24,31 @@ HRESULT CMainApp::Initialize()
         return E_FAIL;
 
     /* 내 게임의 시작을 위해 시작되는 레벨 할당과 동작을 시킨다. */
-    
+    //FAILED_CHECK_RETURN()
+    if (FAILED(m_pGameInstance->Change_Level(static_cast<_uint>(LEVEL::LOADING), CLevel_Loading::Create(m_pDevice, m_pContext))))
+        return E_FAIL;
 
     return S_OK;
 }
 
 void CMainApp::Update(float fTimeDelta)
 {
+    m_pGameInstance->Update_Engine(fTimeDelta);
+}
+
+void CMainApp::LateUpdate(_float fTimeDelta)
+{
+    m_pGameInstance->LateUpdate_Engine(fTimeDelta);
 }
 
 HRESULT CMainApp::Render()
 {
     _float4 vClearColor = { 0.f, 0.f, 1.f, 1.f };
+
     if (FAILED(m_pGameInstance->Clear_Buffers(&vClearColor)))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Draw()))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Present()))
